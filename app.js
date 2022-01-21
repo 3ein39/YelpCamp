@@ -67,19 +67,16 @@ app.post('/campgrounds', validateCampground, catchAsync(async (req, res, next) =
 }));
 
 app.get('/campgrounds/:id', catchAsync(async (req, res) => {
-    const campground = await Campground.findById(req.params.id);
+    const campground = await Campground.findById(req.params.id).populate('reviews');
     res.render('campgrounds/show', { campground });
 }));
 
 app.post('/campgrounds/:id/reviews', validateReview, catchAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id);
-    const review = new Review(req.body.reviews);
-    console.log(review);
+    const review = new Review(req.body.review);
     campground.reviews.push(review);
     await review.save();
     await campground.save();
-    console.log(review.body);
-    console.log(review.rating);
     res.redirect(`/campgrounds/${campground._id}`);
 }))
 
