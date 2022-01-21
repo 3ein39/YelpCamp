@@ -24,18 +24,20 @@
                     </form>
                 </div>
             </div>
-            <div class="form-group mb-3">
-                <div class="mb-3">
-                    <label for="customRange1" class="form-label">Rating</label>
-                    <input name="review[rating]" min="1" max="5" type="range" class="form-range" id="customRange1">
-                </div>
+            <form action="/campgrounds/<%= campground._id %>/reviews " method="POST">
                 <div class="form-group mb-3">
-                    <label class="form-label" for="body">Review</label>
-                    <textarea class="form-control" id="body" cols="30" rows="3" name="review[body]"></textarea>
-                </div>
-                <div class="form-group mb-3">
-                    <button class="btn btn-success">Submit</button>
-                </div>
-            </div>
+                    <div class="mb-3">
+                        <label for="customRange1" class="form-label">Rating</label>
+                        <input name="review[rating]" min="1" max="5" type="range" class="form-range" id="customRange1">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="body">Review</label>
+                        <textarea class="form-control" id="body" cols="30" rows="3" name="review[body]"></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <button class="btn btn-success">Submit</button>
+                    </div>
+            </form>
         </div>
+    </div>
     </div>
