@@ -11,7 +11,10 @@ const campgroundsRouter = require('./routes/campgrounds');
 const reviewsRouter = require('./routes/reviews');
 
 const mongoDB = 'mongodb://127.0.0.1:27017/yelp-camp';
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoDB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+    });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
@@ -24,7 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/campgrounds', campgroundsRouter);
