@@ -20,7 +20,7 @@ const mongoDB = 'mongodb://127.0.0.1:27017/yelp-camp';
 mongoose.connect(mongoDB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-    });
+});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
@@ -31,7 +31,7 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -56,6 +56,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
@@ -70,9 +71,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/fakeUser', async (req, res) => {
-   const user = new User({ email: 'test@gmail', username: 'testUserName' });
-   const newUser = await User.register(user, 'testPassword');
-   res.send(newUser);
+    const user = new User({email: 'test@gmail', username: 'testUserName'});
+    const newUser = await User.register(user, 'testPassword');
+    res.send(newUser);
 
 });
 
@@ -82,12 +83,10 @@ app.all('*', (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-    const { statusCode = 500 } = err;
+    const {statusCode = 500} = err;
     if (!err.message) err.message = 'Oh boy, Something went wrong';
-    res.status(statusCode).render('error', { err });
+    res.status(statusCode).render('error', {err});
 });
-
-
 
 
 app.listen(3000, () => {
