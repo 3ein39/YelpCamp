@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate') -%>
+<link rel="stylesheet" href="/stylesheets/stars.css">
 <div class="row">
     <div class="col-6">
         <div class="card mb-3">
@@ -35,12 +36,8 @@
             <form class="needs-validation" action="/campgrounds/<%= campground._id %>/reviews " method="POST"
                   novalidate>
                 <div class="form-group mb-3">
-                    <div class="mb-3">
-                        <label for="customRange1" class="form-label">Rating</label>
-                        <input name="review[rating]" min="1" max="5" type="range" class="form-range" id="customRange1">
-                    </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="body">Review</label>
+                        <label class="form-label card-title" for="body">Leave a Review</label>
                         <textarea class="form-control" id="body" cols="30" rows="3" name="review[body]"
                                   required></textarea>
                         <div class="invalid-feedback">
@@ -50,6 +47,20 @@
                             looks good
                         </div>
                     </div>
+                    <fieldset class="starability-basic">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                               aria-label="No review[rating]."/>
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1"/>
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2"/>
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3"/>
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4"/>
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5"/>
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
                     <div class="form-group mb-3">
                         <button class="btn btn-success">Submit</button>
                     </div>
@@ -60,11 +71,12 @@
         <% for( let review of campground.reviews ) { %>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Rating: <%= review.rating %>
+                    <h5 class="card-title"><%= review.author.username %>
                     </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                        By <%= review.author.username %>
-                    </h6>
+                    <p class="starability-result" data-rating="<%= review.rating %>">
+                        Rated: 3 stars
+                    </p>
+
                     <p class="card-text">Review: <%= review.body %>
                     </p>
                     <% if(currentUser && review.author.equals(currentUser)) { %>
