@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/3ein39/YelpCamp#readme",
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.13.2",
     "axios": "^0.24.0",
     "cloudinary": "^1.28.1",
     "connect-flash": "^0.1.1",
