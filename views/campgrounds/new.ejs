@@ -1,74 +1,75 @@
 <% layout('layouts/boilerplate') -%>
-    <div class="row">
-        <h1 class="text-center">Add new campground</h1>
-        <div class="col-6 offset-3">
-            <form action="/campgrounds" method="POST" class="needs-validation" novalidate>
+<div class="row">
+    <h1 class="text-center">Add new campground</h1>
+    <div class="col-6 offset-3">
+        <form action="/campgrounds" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
 
-                <div class="mb-3">
-                    <label class="form-label" for="title" id="title">Title</label>
-                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+            <div class="mb-3">
+                <label class="form-label" for="title" id="title">Title</label>
+                <input class="form-control" type="text" id="title" name="campground[title]" required>
+                <div class="invalid-feedback">
+                    Add campground title
+                </div>
+                <div class="valid-feedback">
+                    looks good
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="location" id="location">Location</label>
+                <input class="form-control" type="text" id="location" name="campground[location]" required>
+                <div class="invalid-feedback">
+                    Add campground location
+                </div>
+                <div class="valid-feedback">
+                    looks good
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="imageURL" id="imageURL">Upload Img</label>
+                <input class="form-control" type="file" id="imageURL" name="image" required multiple>
+
+                <div class="invalid-feedback">
+                    Add campground image
+                </div>
+                <div class="valid-feedback">
+                    looks good
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="price" id="price">Campground price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="price">$</span>
+                    <input type="text" class="form-control" placeholder="0.00" aria-label="price"
+                           aria-describedby="price" name="campground[price]" required>
                     <div class="invalid-feedback">
-                        Add campground title
+                        Add campground price
                     </div>
                     <div class="valid-feedback">
                         looks good
                     </div>
                 </div>
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="location" id="location">Location</label>
-                    <input class="form-control" type="text" id="location" name="campground[location]" required>
-                    <div class="invalid-feedback">
-                        Add campground location
-                    </div>
-                    <div class="valid-feedback">
-                        looks good
-                    </div>
+            <div class="mb-3">
+                <label class="form-label" for="description" id="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="campground[description]"
+                          required> </textarea>
+                <div class="invalid-feedback">
+                    Add campground description
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label" for="imageURL" id="imageURL">ImageURL</label>
-                    <input class="form-control" type="text" id="imageURL" name="campground[image]" required>
-                    <div class="invalid-feedback">
-                        Add campground image
-                    </div>
-                    <div class="valid-feedback">
-                        looks good
-                    </div>
+                <div class="valid-feedback">
+                    looks good
                 </div>
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="price" id="price">Campground price</label>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="price">$</span>
-                        <input type="text" class="form-control" placeholder="0.00" aria-label="price"
-                            aria-describedby="price" name="campground[price]" required>
-                        <div class="invalid-feedback">
-                            Add campground price
-                        </div>
-                        <div class="valid-feedback">
-                            looks good
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Add campground</button>
+                <a class="btn btn-secondary" href="/campgrounds">All campgrounds</a>
+            </div>
+        </form>
 
-                <div class="mb-3">
-                    <label class="form-label" for="description" id="description">Description</label>
-                    <textarea class="form-control" type="text" id="description" name="campground[description]"
-                        required> </textarea>
-                    <div class="invalid-feedback">
-                        Add campground description
-                    </div>
-                    <div class="valid-feedback">
-                        looks good
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <button class="btn btn-success">Add campground</button>
-                    <a class="btn btn-secondary" href="/campgrounds">All campgrounds</a>
-                </div>
-            </form>
-
-        </div>
     </div>
+</div>
