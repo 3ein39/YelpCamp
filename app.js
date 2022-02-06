@@ -21,8 +21,15 @@ const User = require('./models/user');
 const helmet = require('helmet');
 
 const mongoSanitize = require('express-mongo-sanitize');
+const {MongoStore} = require("connect-mongo");
 
 const mongoDB = 'mongodb://127.0.0.1:27017/yelp-camp';
+
+const MongoDBStore = require('connect-mongo')(session);
+
+/*
+const dbUrl = process.env.DB_URL;
+*/
 mongoose.connect(mongoDB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -42,7 +49,18 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize());
 
+const store = new MongoDBStore({
+    url: mongoDB,
+    secret: 'thisshouldbeabettersecret',
+    touchAfter: 24 * 60 * 60
+});
+
+store.on('error', function (e) {
+    console.log("SESSION STORE ERROR", e);
+})
+
 const sessionConfig = {
+    store,
     name: 'session',
     secret: 'thisshouldbeabettersecret',
     resave: false,
