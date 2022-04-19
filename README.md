@@ -1,12 +1,14 @@
+
+
+
+![App Screenshot](https://res.cloudinary.com/ein39/image/upload/v1650404868/Screenshot_from_2022-04-19_23-47-28_fscadv.png)
+
+
 # YelpCamp
-A Node.js web application project from the Udemy course - The Web Developer Bootcamp by Colt Steele.
-It is a web application designed to add, rate and review different campgrounds, different users(read campers) can put in their comments and concerns, so that it is a well informed and well prepared camping trip for other users.
 
-## Live Demo
-For Live Demo go to https://pacific-headland-69253.herokuapp.com/
-
-
+A Node.js web application project from the Udemy course - The Web Developer Bootcamp by Colt Steele. It is a web application designed to add, rate and review different campgrounds, different users(read campers) can put in their comments and concerns, so that it is a well informed and well prepared camping trip for other users.
 ## Features
+
 * Authentication:
   - User login with username and password
 
@@ -32,21 +34,81 @@ For Live Demo go to https://pacific-headland-69253.herokuapp.com/
 
   - Update campground photos when editing campgrounds
 
-## Built with
-  - Front-end
-  - ejs
-  - Bootstrap
-  - Back-end
-  - express
-  - mongoDB
-  - mongoose
-  - passport
-  - passport-local
-  - express-session
-  - method-override
-  - Heroku
 
-$$ You can use 
-- User : Hussein Hany
-- Password : password
-- for demo
+## API Reference
+
+#### list all campgrounds
+
+```http
+  GET /campgrounds
+```
+#### Create a campground
+
+```http
+  POST /campgrounds/new
+```
+#### Edit a campground
+
+```http
+  get /campgrounds/:id/edit
+```
+ | Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of campground to edit |
+
+ **must** be logged in and author to edit 
+
+ #### Delete a campground
+ ```http
+  Delete /campgrounds/:id
+```
+ | Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of campground to delete |
+
+ **must** be logged in and author to delete 
+
+ #### Add a review to specific campground
+ ```http
+  POST /campgrounds/:id/reviews
+```
+ | Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of campground |
+
+**must** be logged in to review
+
+ #### Delete a review from specific campground
+ ```http
+  Delete /campgrounds/:id/reviews/:reviewId
+```
+ | Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of campground |
+| `reviewId`      | `string` | **Required**. Id of review to delete |
+**must** be logged in & review owner to delete it
+
+
+
+
+## Demo
+
+https://pacific-headland-69253.herokuapp.com/
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`CLOUDINARY_CLOUD_NAME`
+`CLOUDINARY_KEY`
+`CLOUDINARY_SECRET`
+
+`DB_URL`
+`MAPBOX_TOKEN`
+
+
+## Acknowledgements
+
+ - [Colt Steel's course](https://www.udemy.com/course/the-web-developer-bootcamp/)
+
