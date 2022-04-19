@@ -39,17 +39,17 @@ A Node.js web application project from the Udemy course - The Web Developer Boot
 
 #### list all campgrounds
 
-```http
+```bash
   GET /campgrounds
 ```
 #### Create a campground
 
-```http
+```bash
   POST /campgrounds/new
 ```
 #### Edit a campground
 
-```http
+```bash
   get /campgrounds/:id/edit
 ```
  | Parameter | Type     | Description                       |
@@ -59,7 +59,7 @@ A Node.js web application project from the Udemy course - The Web Developer Boot
  **must** be logged in and author to edit 
 
  #### Delete a campground
- ```http
+ ```bash
   Delete /campgrounds/:id
 ```
  | Parameter | Type     | Description                       |
@@ -69,7 +69,7 @@ A Node.js web application project from the Udemy course - The Web Developer Boot
  **must** be logged in and author to delete 
 
  #### Add a review to specific campground
- ```http
+ ```bash
   POST /campgrounds/:id/reviews
 ```
  | Parameter | Type     | Description                       |
@@ -79,7 +79,7 @@ A Node.js web application project from the Udemy course - The Web Developer Boot
 **must** be logged in to review
 
  #### Delete a review from specific campground
- ```http
+ ```bash
   Delete /campgrounds/:id/reviews/:reviewId
 ```
  | Parameter | Type     | Description                       |
