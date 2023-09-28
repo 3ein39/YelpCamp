@@ -93,7 +93,7 @@ A Node.js web application project from the Udemy course - The Web Developer Boot
 
 ## Demo
 
-https://pacific-headland-69253.herokuapp.com/
+[https://pacific-headland-69253.herokuapp.com/](https://yelp-camp-3ein39-a9b61f5ffabd.herokuapp.com/)
 
 
 ## Environment Variables
