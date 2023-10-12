@@ -22,7 +22,7 @@ const helmet = require('helmet');
 
 const mongoSanitize = require('express-mongo-sanitize');
 
-const mongoDB = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
+const mongoDB = process.env.DB_URL;
 
 const MongoDBStore = require('connect-mongo')(session);
 
