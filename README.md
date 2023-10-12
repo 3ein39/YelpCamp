@@ -93,8 +93,15 @@ A Node.js web application project from the Udemy course - The Web Developer Boot
 
 ## Demo
 
-https://pacific-headland-69253.herokuapp.com/
+[https://pacific-headland-69253.herokuapp.com/](https://yelp-camp-3ein39-a9b61f5ffabd.herokuapp.com/)
 
+You can explore the YelpCamp web application and its features using the following demonstration user accounts. These are **fake users for demonstration**:
+
+- **Username:** user1
+  - **Password:** user1
+
+- **Username:** chicken
+  - **Password:** chicken
 
 ## Environment Variables
 
