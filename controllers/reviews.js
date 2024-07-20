@@ -3,7 +3,7 @@ const Review = require("../models/review");
 
 module.exports.createReview = async (req, res) => {
   req.flash("error", "this functionality is disabled right now");
-  res.redirect("/");
+  res.redirect("/campgrounds");
   return;
   const campground = await Campground.findById(req.params.id);
   const review = new Review(req.body.review);

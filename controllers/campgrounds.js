@@ -15,7 +15,7 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createCampground = async (req, res, next) => {
   req.flash("error", "this functionality is disabled right now");
-  res.redirect("/");
+  res.redirect("/campgrounds");
   return;
   const geoData = await geocoder
     .forwardGeocode({
@@ -66,7 +66,7 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateCampground = async (req, res) => {
   req.flash("error", "this functionality is disabled right now");
-  res.redirect("/");
+  res.redirect("/campgrounds");
   return;
   const { id } = req.params;
   const campground = await Campground.findByIdAndUpdate(id, {
