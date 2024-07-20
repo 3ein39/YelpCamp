@@ -3,6 +3,8 @@ const Review = require("../models/review");
 
 
 module.exports.createReview = async (req, res) => {
+    alert('this functionality is disabled for now');
+    return;
     const campground = await Campground.findById(req.params.id);
     const review = new Review(req.body.review);
     review.author = req.user._id;
